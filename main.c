@@ -181,7 +181,7 @@ void	test_ex4(int (*testex)(int *, int, int(*)(int, int)))
 	assert(returned_value == 1);
 
 
-	printf("Testing with array made up of identical numbers;\n");
+	printf("\nTesting with array made up of identical numbers;\n");
 
 	returned_value = testex(int_array_sorted_all_identical, 5, &are_ints_sorted);
 	pos = 0;
@@ -195,7 +195,7 @@ void	test_ex4(int (*testex)(int *, int, int(*)(int, int)))
 	printf("Actual returned value: %i\n", returned_value);
 	assert(returned_value == 1);
 
-	printf("Testing with array that's not sorted;\n");
+	printf("\nTesting with array that's not sorted;\n");
 
 	returned_value = testex(int_array_not_sorted, 6, &are_ints_sorted);
 	pos = 0;
@@ -209,7 +209,7 @@ void	test_ex4(int (*testex)(int *, int, int(*)(int, int)))
 	printf("Actual returned value: %i\n", returned_value);
 	assert(returned_value == 0);
 
-	printf("Testing with ascending array where only SOME numbers are identical;\n");
+	printf("\nTesting with ascending array where only SOME numbers are identical;\n");
 
 	returned_value = testex(array_ascending_where_some_numbers_are_identical, 6, &are_ints_sorted);
 	pos = 0;
@@ -224,7 +224,7 @@ void	test_ex4(int (*testex)(int *, int, int(*)(int, int)))
 	assert(returned_value == 1);
 
 
-	printf("Testing with descending array where only SOME numbers are identical;\n");
+	printf("\nTesting with descending array where only SOME numbers are identical;\n");
 
 	returned_value = testex(array_descending_where_some_numbers_are_identical, 6, &are_ints_sorted);
 	pos = 0;
@@ -232,6 +232,20 @@ void	test_ex4(int (*testex)(int *, int, int(*)(int, int)))
 	while (pos < 6)
 	{
 		printf("%i, ", array_descending_where_some_numbers_are_identical[pos]);
+		pos++;
+	}
+	printf("\n\nReturned number should be 1\n");
+	printf("Actual returned value: %i\n", returned_value);
+	assert(returned_value == 1);
+
+	printf("\nTesting with LENGTH == 0, apparently an empty thing is sorted, which arguably makes sense;\n");
+
+	returned_value = testex(int_array_not_sorted, 1, &are_ints_sorted);
+	pos = 0;
+	printf("\nOur array:\n");
+	while (pos < 6)
+	{
+		printf("%i, ", int_array_not_sorted[pos]);
 		pos++;
 	}
 	printf("\n\nReturned number should be 1\n");
